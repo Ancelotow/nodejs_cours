@@ -1,0 +1,19 @@
+{
+  "name": "projet_cours",
+  "version": "1.0.0",
+  "description": "Projet pour le cours de NodeJS de l'ESGI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ancelotow/nodejs_cours.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ancelotow/nodejs_cours/issues"
+  },
+  "homepage": "https://github.com/Ancelotow/nodejs_cours#readme"
+}
