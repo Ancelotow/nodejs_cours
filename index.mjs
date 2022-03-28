@@ -1,38 +1,17 @@
-import { GetAll, Add, Update, Remove, Product } from "./product.mjs";
+import * as http from 'http'
 
-// Test ajout
-try{
-    Add("Coca Cola", 9)
-    Add("Sprite", 10)
-    Add("Fanta", 34)
-    Add("Fanta", 9)
-} catch(error) {
-    console.error(error.message);
-} finally {
-    GetAll()
-}
+const port = 3000
+const host = '127.0.0.1'
 
-// Test modification
-try{
-    Update("Sprite", 4)
-    Update("ds", 4)
-} catch (error) {
-    console.error(error.message)
-} finally {
-    GetAll()
+const server = http.createServer((request, response) => {
+    response.statusCode = 200
+    response.setHeader('Content-Type', 'application/json')
+    response.write("Hello World ! first\n")
+    response.end('Hello World ! second')
+});
 
-}
-
-// Test suppression
-try{
-    Remove("Sprite", 4)
-    Remove("Fanta", 10)
-    Remove("ds", 4)
-} catch (error) {
-    console.error(error.message)
-} finally {
-    GetAll()
-
-}
+server.listen(port, host, () => {
+    console.log(`Server running on http://${host}:${port}`)
+})
 
 

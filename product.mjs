@@ -1,36 +1,44 @@
-const products = []
+import file from "fs"
+
+let products = []
+const filename = "products.json"
 
 class Product {
     name = ""
-    qty = 0
+    quantity = 0
 
     constructor(_name, _qty) {
         this.name = _name
-        this.qty = _qty
+        this.quantity = _qty
     }
 }
 
 const Add = (name, qty) => {
+    let products = ReadFile()
     if(GetByName(name)) {
         throw new Error("Product already exists.")
     } else {
         products.push(new Product(name, qty))
-        console.log('Product ', name, ' has been added !')
+        WriteFile()
+        console.log(`Product ${name} has been added !`)
     }
 }
 
 const GetAll = () => {
-    products.forEach(prd => console.log(prd.name, ' : ', prd.qty))
+    let products = ReadFile()
+    products.forEach(prd => console.log(prd.name, ' : ', prd.quantity))
 };
 
 const GetByName = (name = "") => {
+    products = ReadFile()
     return products.find(prd => prd.name === name)
 };
 
 const Update = (name, qty) => {
     let product = GetByName(name);
     if(product){
-        product.qty = qty
+        product.quantity = qty
+        WriteFile()
     } else {
         throw new Error("Not found product.")
     }
@@ -39,15 +47,28 @@ const Update = (name, qty) => {
 const Remove = (name, qty) => {
     let product = GetByName(name);
     if(product){
-        product.qty -= qty
-        if(product.qty <= 0) {
+        product.quantity -= qty
+        if(product.quantity <= 0) {
             let index = products.indexOf(product)
             products.splice(index, 1)
         }
+        WriteFile()
     } else {
         throw new Error("Not found product.")
     }
 };
+
+const WriteFile = () => {
+    file.writeFileSync(filename, JSON.stringify(products))
+}
+
+const ReadFile = () => {
+    let data = file.readFileSync(filename, 'utf8');
+    if(data === "") {
+        return []
+    }
+    return JSON.parse(data)
+}
 
 export { Add, GetAll, GetByName, Update, Remove, Product };
 
