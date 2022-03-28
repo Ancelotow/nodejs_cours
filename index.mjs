@@ -1,6 +1,10 @@
-import { add, getAll } from "./product.mjs";
+import { add, getAll, addAsync } from "./product.mjs";
 
-add("Coca Cola")
-add("Fanta")
-add("Sprite")
-getAll()
+const arr = []
+arr.push(addAsync("Coca Cola"))
+arr.push(addAsync("Fanta"))
+arr.push(addAsync("Sprite"))
+Promise.all(arr).then(() => {
+    getAll()
+})
+
