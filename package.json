@@ -2,11 +2,11 @@
   "name": "projet_cours",
   "version": "1.0.0",
   "description": "Projet pour le cours de NodeJS de l'ESGI",
-  "main": "index.js",
+  "main": "index.mjs",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "main": "node index.js"
+    "main": "node index.mjs"
   },
   "repository": {
     "type": "git",

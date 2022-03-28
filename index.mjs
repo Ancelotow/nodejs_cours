@@ -1,4 +1,4 @@
-import { add, getAll } from "./product.js";
+import { add, getAll } from "./product.mjs";
 
 add("Coca Cola")
 add("Fanta")
