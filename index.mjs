@@ -1,40 +1,37 @@
-import { getAll, addAsync, update, remove, Product } from "./product.mjs";
-
-const arr = []
-arr.push(addAsync(new Product("Coca Cola", 9)))
-arr.push(addAsync(new Product("Sprite", 10)))
-arr.push(addAsync(new Product("Fanta", 34)))
-arr.push(addAsync(new Product("Fanta", 9)))
+import { GetAll, Add, Update, Remove, Product } from "./product.mjs";
 
 // Test ajout
 try{
-    await Promise.all(arr);
+    Add("Coca Cola", 9)
+    Add("Sprite", 10)
+    Add("Fanta", 34)
+    Add("Fanta", 9)
 } catch(error) {
     console.error(error.message);
 } finally {
-    getAll()
+    GetAll()
 }
 
 // Test modification
 try{
-    update("Sprite", 4)
-    update("ds", 4)
+    Update("Sprite", 4)
+    Update("ds", 4)
 } catch (error) {
     console.error(error.message)
 } finally {
-    getAll()
+    GetAll()
 
 }
 
 // Test suppression
 try{
-    remove("Sprite", 4)
-    remove("Fanta", 10)
-    remove("ds", 4)
+    Remove("Sprite", 4)
+    Remove("Fanta", 10)
+    Remove("ds", 4)
 } catch (error) {
     console.error(error.message)
 } finally {
-    getAll()
+    GetAll()
 
 }
 

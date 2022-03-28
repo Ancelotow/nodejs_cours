@@ -10,38 +10,25 @@ class Product {
     }
 }
 
-const add = (product = new Product()) => {
-    if(getByName(product.name)) {
+const Add = (name, qty) => {
+    if(GetByName(name)) {
         throw new Error("Product already exists.")
     } else {
-        products.push(product)
-        console.log('Product ', product.name, ' has been added !')
+        products.push(new Product(name, qty))
+        console.log('Product ', name, ' has been added !')
     }
-};
+}
 
-const addAsync = (product = new Product()) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            try {
-                add(product)
-                resolve()
-            } catch (e) {
-                reject(e)
-            }
-        }, 1000)
-    });
-};
-
-const getAll = () => {
+const GetAll = () => {
     products.forEach(prd => console.log(prd.name, ' : ', prd.qty))
 };
 
-const getByName = (name = "") => {
+const GetByName = (name = "") => {
     return products.find(prd => prd.name === name)
 };
 
-const update = (name, qty) => {
-    let product = getByName(name);
+const Update = (name, qty) => {
+    let product = GetByName(name);
     if(product){
         product.qty = qty
     } else {
@@ -49,8 +36,8 @@ const update = (name, qty) => {
     }
 };
 
-const remove = (name, qty) => {
-    let product = getByName(name);
+const Remove = (name, qty) => {
+    let product = GetByName(name);
     if(product){
         product.qty -= qty
         if(product.qty <= 0) {
@@ -62,6 +49,6 @@ const remove = (name, qty) => {
     }
 };
 
-export { add, getAll, addAsync, getByName, update, remove, Product };
+export { Add, GetAll, GetByName, Update, Remove, Product };
 
 
