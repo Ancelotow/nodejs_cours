@@ -1,10 +1,6 @@
-/*const prd = require('./product.js')
+import { add, getAll } from "./product.js";
 
-prd.add("Coca Cola")
-prd.add("Fanta")
-prd.add("Sprite")
-prd.getAll()*/
-
-const x = Object.freeze([])
-x[0] = "First element"
-console.log(x)
+add("Coca Cola")
+add("Fanta")
+add("Sprite")
+getAll()

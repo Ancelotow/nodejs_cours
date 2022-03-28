@@ -1,15 +1,13 @@
 const products = []
 
-module.exports = {
-
-    add: function (product = "") {
-        products.push(product)
-    },
-
-    getAll: function () {
-        products.forEach(prd => console.log(prd))
-    },
-
+const add = (product = "") => {
+    products.push(product)
 };
+
+const getAll = () => {
+    products.forEach(prd => console.log(prd))
+};
+
+export { add, getAll };
 
 
