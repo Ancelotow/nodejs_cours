@@ -26,7 +26,7 @@ const Add = (name, qty) => {
 
 const GetAll = () => {
     let products = ReadFile()
-    products.forEach(prd => console.log(prd.name, ' : ', prd.quantity))
+    return products
 };
 
 const GetByName = (name = "") => {

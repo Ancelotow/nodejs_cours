@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "main": "node index.mjs"
+    "main": "node index.mjs",
+    "nodemon": "nodemon --inspect ./index.mjs"
   },
   "repository": {
     "type": "git",
@@ -17,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Ancelotow/nodejs_cours/issues"
   },
-  "homepage": "https://github.com/Ancelotow/nodejs_cours#readme"
+  "homepage": "https://github.com/Ancelotow/nodejs_cours#readme",
+  "dependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
