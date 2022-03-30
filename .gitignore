@@ -1,3 +1,4 @@
 _cours
 .idea
 node_modules
+.package-lock.json

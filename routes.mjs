@@ -1,23 +1,51 @@
-import {GetAll, GetByName, Add, Product} from './product.mjs'
-import express from 'express';
+import {GetAll, GetByName, Add, Remove} from './product.mjs'
+import express from 'express'
+import bodyParser from 'body-parser'
+
+// create application/json parser
+const jsonParser = bodyParser.json()
+
+// create application/x-www-form-urlencoded parser
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 const router = express.Router();
 
+/**
+ * Get all products
+ */
 router.get('/products', (req, res) => {
-    res.setHeader('Content-Type', 'application/json')
     res.send(GetAll())
 });
 
+/**
+ * Get one specific product
+ */
 router.get('/products/:name', (req, res) => {
-    res.setHeader('Content-Type', 'application/json')
     res.send(GetByName(req.params.name))
 });
 
-router.post('/products', (req, res) => {
-    res.setHeader('Content-Type', 'application/json')
+/**
+ * Add new product if not exists
+ */
+router.post('/products', jsonParser, (req, res) => {
     try {
         Add(req.body.name, req.body.quantity)
         res.statusCode = 201
         res.send(req.body)
+    } catch (e) {
+        res.statusCode = 400
+        res.send(e.message)
+    }
+});
+
+/**
+ * Delete product or remove quantity from product
+ */
+router.delete('/products/:name', (req, res) => {
+    try {
+        let qty = (req.query.quantity) ? req.query.quantity  : 0
+        Remove(req.params.name, qty)
+        res.send("Quantity has been removed")
     } catch (e) {
         res.statusCode = 400
         res.send(e.message)

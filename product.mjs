@@ -15,7 +15,7 @@ class Product {
 
 const Add = (name, qty) => {
     products = ReadFile()
-    if(GetByName(name)) {
+    if (GetByName(name)) {
         throw new Error("Product already exists.")
     } else {
         products.push(new Product(name, qty))
@@ -36,7 +36,7 @@ const GetByName = (name = "") => {
 
 const Update = (name, qty) => {
     let product = GetByName(name);
-    if(product){
+    if (product) {
         product.quantity = qty
         WriteFile()
     } else {
@@ -44,11 +44,11 @@ const Update = (name, qty) => {
     }
 };
 
-const Remove = (name, qty) => {
+const Remove = (name, qty = 0) => {
     let product = GetByName(name);
-    if(product){
-        product.quantity -= qty
-        if(product.quantity <= 0) {
+    if (product) {
+        product.quantity -= (qty <= 0) ? product.quantity : qty
+        if (product.quantity <= 0) {
             let index = products.indexOf(product)
             products.splice(index, 1)
         }
@@ -64,12 +64,12 @@ const WriteFile = () => {
 
 const ReadFile = () => {
     let data = file.readFileSync(filename, 'utf8');
-    if(data === "") {
+    if (data === "") {
         return []
     }
     return JSON.parse(data)
 }
 
-export { Add, GetAll, GetByName, Update, Remove, Product };
+export {Add, GetAll, GetByName, Update, Remove, Product};
 
 
