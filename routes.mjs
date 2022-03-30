@@ -14,14 +14,14 @@ const router = express.Router();
  * Get all products
  */
 router.get('/products', (req, res) => {
-    res.send(GetAll())
+    res.status(200).send(GetAll())
 });
 
 /**
  * Get one specific product
  */
 router.get('/products/:name', (req, res) => {
-    res.send(GetByName(req.params.name))
+    res.status(200).send(GetByName(req.params.name))
 });
 
 /**
@@ -30,11 +30,9 @@ router.get('/products/:name', (req, res) => {
 router.post('/products', jsonParser, (req, res) => {
     try {
         Add(req.body.name, req.body.quantity)
-        res.statusCode = 201
-        res.send(req.body)
+        res.status(201).send(req.body)
     } catch (e) {
-        res.statusCode = 400
-        res.send(e.message)
+        res.status(400).send(e.message)
     }
 });
 

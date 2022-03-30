@@ -1,3 +1,0 @@
-### Get all product
-GET http://localhost:3000/products
-Accept: application/json

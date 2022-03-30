@@ -14,7 +14,7 @@ app.use(bodyParser.json({ type: 'application/*+json' }))
 
 // Ceci permet d'afficher les logs d'appel dans la console
 // exemple quand POST /products est appelé : POST /products 400  -  3.798 ms
-app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url" HTTP/:http-version :status :response-time ms'))
+app.use(morgan('dev'))
 app.use(router)
 
 app.listen(port, host, () => {
