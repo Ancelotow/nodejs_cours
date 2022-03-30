@@ -7,7 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "main": "node index.mjs",
-    "nodemon": "nodemon --inspect ./index.mjs --ignore products.json"
+    "nodemon": "nodemon --inspect ./index.mjs --ignore products.json",
+    "start": "node index.mjs"
   },
   "repository": {
     "type": "git",
