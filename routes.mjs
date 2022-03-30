@@ -43,9 +43,13 @@ router.post('/products', jsonParser, (req, res) => {
  */
 router.delete('/products/:name', (req, res) => {
     try {
-        let qty = (req.query.quantity) ? req.query.quantity  : 0
-        Remove(req.params.name, qty)
-        res.send("Quantity has been removed")
+        if(req.query.quantity) {
+            Remove(req.params.name, req.query.quantity)
+            res.send("Quantity has been removed")
+        } else {
+            res.statusCode = 400
+            res.send("Missing parameter 'quantity'")
+        }
     } catch (e) {
         res.statusCode = 400
         res.send(e.message)
