@@ -14,7 +14,7 @@ class Product {
 }
 
 const Add = (name, qty) => {
-    let products = ReadFile()
+    products = ReadFile()
     if(GetByName(name)) {
         throw new Error("Product already exists.")
     } else {
@@ -25,7 +25,7 @@ const Add = (name, qty) => {
 }
 
 const GetAll = () => {
-    let products = ReadFile()
+    products = ReadFile()
     return products
 };
 

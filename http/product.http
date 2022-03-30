@@ -1,0 +1,11 @@
+###
+#   Get product
+GET http://localhost:3000/products/PS5 HTTP/1.1
+Accept: application/json
+
+###
+#   Get all product
+GET http://localhost:3000/products HTTP/1.1
+Accept: application/json
+
+
