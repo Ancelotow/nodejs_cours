@@ -1,1 +1,1 @@
-web:npm test --prefix server
+web:npm start
