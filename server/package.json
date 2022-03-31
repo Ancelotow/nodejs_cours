@@ -5,9 +5,7 @@
   "main": "index.mjs",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "main": "node index.mjs",
-    "nodemon": "../node_modules/.bin/nodemon --inspect ./index.mjs --ignore server/products.json",
+    "dev": "nodemon --inspect ./index.mjs --ignore products.json",
     "start": "node index.mjs"
   },
   "repository": {
