@@ -1,7 +1,7 @@
 {
-  "name": "projet_cours",
+  "name": "server",
   "version": "1.0.0",
-  "description": "Projet pour le cours de NodeJS de l'ESGI",
+  "description": "Server NodeJS",
   "main": "index.mjs",
   "type": "module",
   "scripts": {
