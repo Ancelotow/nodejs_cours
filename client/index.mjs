@@ -4,48 +4,53 @@ const urlApi = 'https://esgi-api-nodejs.herokuapp.com/products';
 
 /**
  * Récupère la liste de tout les produits
+ * @returns {Promise<[{name, quantity}]>} La liste des produits
  */
-const getProducts = () => {
+function getProducts() {
     return new Promise((resolve, _) => {
         axios.get(urlApi).then((res) => {
             resolve(res.data)
         });
     });
-};
+}
 
 /**
  * Ajoute un nouveau produit
+ * @param name Le nom
+ * @param quantity La quantité
+ * @returns {Promise<?>} La réponse de l'API (201: ajouter, 400: éxiste déjà)
  */
-const addProduct = (name, quantity) => {
-    const product = { "name" : name, "quantity" : quantity}
+function addProduct(name, quantity){
+    const product = {name: name, quantity: quantity}
     return new Promise((resolve, _) => {
         axios.post(urlApi, product).then((res) => {
-            if(res.status === 201) {
-                resolve(JSON.stringify(res.data))
+            if (res.status === 201) {
+                resolve(res.data)
             } else {
                 resolve("Error : ", JSON.stringify(res.data))
             }
         }).catch((err) => {
             resolve(err.response.data)
-        })
+        });
     });
-};
+}
 
 /**
  * Récupère la liste de tout les produits de manière asynchrone
+ * @returns {Promise<[{name, quantity}]>} La liste des produits
  */
-const getProductsAsync = async () => {
+async function getProductsAsync() {
     let res = await axios.get(urlApi)
     return res.data
-};
+}
 
 /**
  * IIFE (Immediately Invoked Function Expression)
  */
 (async () => {
 
-    getProducts().then(res => console.log("# getProducts() : ", res));
-    addProduct("Star Citizen : Test", 24).then(res => console.log("# addProduct() : ", res));
+    console.log("# getProducts() : ", await getProducts());
+    console.log("# addProduct() : ", await addProduct("MacBook Pro 14' 16Go", 76))
     console.log("# getProductsAsync() : ", await getProductsAsync());
 
 })();
