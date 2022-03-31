@@ -1,5 +1,4 @@
 import axios from 'axios'
-import * as url from "url";
 
 const urlApi = 'https://esgi-api-nodejs.herokuapp.com/products';
 
