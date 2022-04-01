@@ -1,10 +1,10 @@
-import file from "fs"
+import file from 'fs'
 
 let products = []
-const filename = "products.json"
+const filename = 'products.json'
 
 class Product {
-    name = ""
+    name = ''
     quantity = 0
 
     constructor(_name, _qty) {
@@ -23,7 +23,7 @@ class Product {
 const Add = (name, qty) => {
     products = ReadFile()
     if (GetByName(name)) {
-        throw new Error("Product already exists.")
+        throw new Error('Product already exists.')
     } else {
         products.push(new Product(name, qty))
         WriteFile()
@@ -39,7 +39,7 @@ const Add = (name, qty) => {
 const GetAll = () => {
     products = ReadFile()
     return products
-};
+}
 
 /**
  * Retourne un produit à partir de son nom
@@ -47,10 +47,10 @@ const GetAll = () => {
  * @returns {T} Le produit recherché. NULL s'il n'éxiste pas
  * @constructor
  */
-const GetByName = (name = "") => {
+const GetByName = (name = '') => {
     products = ReadFile()
     return products.find(prd => prd.name === name)
-};
+}
 
 /**
  * Modifie la quantité d'un produit
@@ -60,14 +60,14 @@ const GetByName = (name = "") => {
  * @constructor
  */
 const Update = (name, qty) => {
-    let product = GetByName(name);
+    let product = GetByName(name)
     if (product) {
         product.quantity = qty
         WriteFile()
     } else {
-        throw new Error("Not found product.")
+        throw new Error('Not found product.')
     }
-};
+}
 
 /**
  * Supprime une quantité donné d'un produit. Si la quantité est à 0, le produit est supprimé
@@ -77,7 +77,7 @@ const Update = (name, qty) => {
  * @constructor
  */
 const Remove = (name, qty = 0) => {
-    let product = GetByName(name);
+    let product = GetByName(name)
     if (product) {
         product.quantity -= (qty <= 0) ? product.quantity : qty
         if (product.quantity <= 0) {
@@ -86,9 +86,9 @@ const Remove = (name, qty = 0) => {
         }
         WriteFile()
     } else {
-        throw new Error("Not found product.")
+        throw new Error('Not found product.')
     }
-};
+}
 
 /**
  * Modifie le fichier JSON qui contient la liste des produits
@@ -104,13 +104,13 @@ const WriteFile = () => {
  * @constructor
  */
 const ReadFile = () => {
-    let data = file.readFileSync(filename, 'utf8');
-    if (data === "") {
+    let data = file.readFileSync(filename, 'utf8')
+    if (data === '') {
         return []
     }
     return JSON.parse(data)
 }
 
-export {Add, GetAll, GetByName, Update, Remove, Product};
+export {Add, GetAll, GetByName, Update, Remove, Product}
 
 
