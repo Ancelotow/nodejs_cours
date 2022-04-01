@@ -10,4 +10,10 @@ export default {
             url: "https://esgi.fr",
         },
     },
+    servers: [
+        {
+            url: "http://localhost:3000",
+            description: "Local server",
+        },
+    ],
 };
