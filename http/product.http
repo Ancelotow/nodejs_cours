@@ -1,3 +1,5 @@
+@token = "test"
+
 ###
 # @name Authentification
 POST http://localhost:3001/auth
@@ -13,6 +15,7 @@ Content-Type: application/json
 # @name Delete product
 DELETE http://localhost:3001/products/Samsung Galaxy S21++?quantity=62 HTTP/1.1
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
 # @name Add product
