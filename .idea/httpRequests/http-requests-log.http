@@ -1,6 +1,13 @@
 GET http://localhost:3000/products
 Accept: application/json
 
+<> 2022-04-01T104150.200.json
+
+###
+
+GET http://localhost:3000/products
+Accept: application/json
+
 <> 2022-03-31T103200.200.json
 
 ###
