@@ -15,5 +15,9 @@ export default {
             url: "http://localhost:3000",
             description: "Local server",
         },
+        {
+            url: "https://esgi-api-nodejs.herokuapp.com",
+            description: "Heroku server",
+        },
     ],
 };
