@@ -1,6 +1,7 @@
-import { GetAll, GetByName, Add, Remove } from './product.mjs'
-import express from 'express'
-import bodyParser from 'body-parser'
+import { GetAll, GetByName, Add, Remove } from "./product.mjs"
+import { auth } from "./controllers/auth/index.mjs"
+import express from "express"
+import bodyParser from "body-parser"
 
 // create application/json parser
 const jsonParser = bodyParser.json()
@@ -13,25 +14,25 @@ const router = express.Router()
 /**
  * Get all products
  */
-router.get('/products', (req, res) => {
+router.get("/products", (req, res) => {
   res.status(200).send(GetAll())
 })
 
 /**
  * Get one specific product
  */
-router.get('/products/:name', (req, res) => {
+router.get("/products/:name", (req, res) => {
   res.status(200).send(GetByName(req.params.name))
 })
 
 /**
  * Add new product if not exists
  */
-router.post('/products', jsonParser, (req, res) => {
+router.post("/products", jsonParser, (req, res) => {
   try {
-        Add(req.body.name, req.body.quantity)
+    Add(req.body.name, req.body.quantity)
     res.status(201).send(req.body)
-    } catch (e) {
+  } catch (e) {
     res.status(400).send(e.message)
   }
 })
@@ -39,18 +40,30 @@ router.post('/products', jsonParser, (req, res) => {
 /**
  * Delete product or remove quantity from product
  */
-router.delete('/products/:name', (req, res) => {
-    try {
+router.delete("/products/:name", (req, res) => {
+  try {
     if (req.query.quantity) {
       Remove(req.params.name, req.query.quantity)
-      res.send('Quantity has been removed')
-        } else {
+      res.send("Quantity has been removed")
+    } else {
       res.statusCode = 400
-            res.send('Missing parameter \'quantity\'')
-        }
+      res.send("Missing parameter 'quantity'")
+    }
   } catch (e) {
-        res.statusCode = 400
+    res.statusCode = 400
     res.send(e.message)
+  }
+})
+
+/**
+ * Authentification
+ */
+router.post("/auth", (req, res) => {
+  const token = auth(req.body.name, req.body.password)
+  if(token) {
+    res.status(200).send(token)
+  } else {
+    res.status(401).send("Access refused")
   }
 })
 

@@ -99,7 +99,7 @@ const WriteFile = () => {
 }
 
 /**
- * Lis le fichier JSONqui contient la liste des produits
+ * Lis le fichier JSON qui contient la liste des produits
  * @returns {*[]|any} La liste des produits
  * @constructor
  */

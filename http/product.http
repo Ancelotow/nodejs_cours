@@ -1,6 +1,17 @@
 ###
+# @name Authentification
+POST http://localhost:3001/auth
+Content-Type: application/json
+
+{
+  "name": "owen",
+  "password": "azerty"
+}
+
+
+###
 # @name Delete product
-DELETE http://localhost:3000/products/Samsung Galaxy S21++?quantity=62 HTTP/1.1
+DELETE http://localhost:3001/products/Samsung Galaxy S21++?quantity=62 HTTP/1.1
 Accept: application/json
 
 ###
