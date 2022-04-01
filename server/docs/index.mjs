@@ -1,3 +1,5 @@
+import products from "./products/index.mjs";
+
 export default {
     openapi: "3.0.1",
     info: {
@@ -20,4 +22,12 @@ export default {
             description: "Heroku server",
         },
     ],
+    paths: {
+        ...products.paths,
+    },
+    components: {
+        schemas: {
+            ...products.schema,
+        },
+    },
 };
