@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon --inspect ./index.mjs --ignore products.json",
-    "start": "node index.mjs"
+    "start": "node index.mjs",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,9 @@
   "dependencies": {
     "body-parser": "^1.19.2",
     "express": "^4.17.3",
-    "morgan": "^1.10.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.15"
   }
 }

@@ -18,10 +18,10 @@ function getProducts() {
  * Ajoute un nouveau produit
  * @param name Le nom
  * @param quantity La quantité
- * @returns {Promise<?>} La réponse de l'API (201: ajouter, 400: éxiste déjà)
+ * @returns {Promise<string | {name, quantity}>} La réponse de l'API (201: ajouter, 400: éxiste déjà)
  */
 function addProduct(name, quantity){
-    const product = {name: name, quantity: quantity}
+    const product = { name, quantity: quantity}
     return new Promise((resolve, _) => {
         axios.post(urlApi, product).then((res) => {
             if (res.status === 201) {
@@ -50,7 +50,7 @@ async function getProductsAsync() {
 (async () => {
 
     console.log("# getProducts() : ", await getProducts());
-    console.log("# addProduct() : ", await addProduct("MacBook Pro 14' 16Go", 76))
+    console.log("# addProduct() : ", await addProduct("MacBook Pro 16' 16Go", 76))
     console.log("# getProductsAsync() : ", await getProductsAsync());
 
 })();
