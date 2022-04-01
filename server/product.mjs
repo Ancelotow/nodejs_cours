@@ -7,9 +7,9 @@ class Product {
   name = ''
     quantity = 0
 
-    constructor(_name, _qty) {
+  constructor(_name, _qty) {
         this.name = _name
-        this.quantity = _qty
+    this.quantity = _qty
     }
 }
 
@@ -21,13 +21,13 @@ class Product {
  * @constructor
  */
 const Add = (name, qty) => {
-    products = ReadFile()
+  products = ReadFile()
   if (GetByName(name)) {
     throw new Error('Product already exists.')
   } else {
-    products.push(new Product(name, qty))
-        WriteFile()
-    console.log(`Product ${name} has been added !`)
+        products.push(new Product(name, qty))
+    WriteFile()
+        console.log(`Product ${name} has been added !`)
   }
 }
 
@@ -38,7 +38,7 @@ const Add = (name, qty) => {
  */
 const GetAll = () => {
   products = ReadFile()
-    return products
+  return products
 }
 
 /**
@@ -49,7 +49,7 @@ const GetAll = () => {
  */
 const GetByName = (name = '') => {
     products = ReadFile()
-  return products.find((prd) => prd.name === name)
+    return products.find((prd) => prd.name === name)
 }
 
 /**
@@ -63,10 +63,10 @@ const Update = (name, qty) => {
   let product = GetByName(name)
   if (product) {
         product.quantity = qty
-        WriteFile()
+    WriteFile()
   } else {
-        throw new Error('Not found product.')
-    }
+    throw new Error('Not found product.')
+  }
 }
 
 /**
@@ -78,16 +78,16 @@ const Update = (name, qty) => {
  */
 const Remove = (name, qty = 0) => {
   let product = GetByName(name)
-    if (product) {
-    product.quantity -= qty <= 0 ? product.quantity : qty
+  if (product) {
+        product.quantity -= qty <= 0 ? product.quantity : qty
     if (product.quantity <= 0) {
-      let index = products.indexOf(product)
-            products.splice(index, 1)
+            let index = products.indexOf(product)
+      products.splice(index, 1)
     }
     WriteFile()
-  } else {
-    throw new Error('Not found product.')
-    }
+    } else {
+        throw new Error('Not found product.')
+  }
 }
 
 /**
@@ -104,11 +104,11 @@ const WriteFile = () => {
  * @constructor
  */
 const ReadFile = () => {
-  let data = file.readFileSync(filename, 'utf8')
+    let data = file.readFileSync(filename, 'utf8')
   if (data === '') {
-    return []
-    }
-  return JSON.parse(data)
+        return []
+  }
+    return JSON.parse(data)
 }
 
 export { Add, GetAll, GetByName, Update, Remove, Product }

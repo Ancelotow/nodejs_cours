@@ -8,10 +8,10 @@ const urlApi = 'https://esgi-api-nodejs.herokuapp.com/products'
  */
 function getProducts() {
   return new Promise((resolve, _) => {
-    axios.get(urlApi).then((res) => {
-      resolve(res.data)
+        axios.get(urlApi).then((res) => {
+            resolve(res.data)
     })
-    })
+  })
 }
 
 /**
@@ -22,20 +22,20 @@ function getProducts() {
  */
 function addProduct(name, quantity) {
   const product = { name, quantity: quantity }
-    return new Promise((resolve, _) => {
-    axios
+  return new Promise((resolve, _) => {
+        axios
       .post(urlApi, product)
       .then((res) => {
-        if (res.status === 201) {
+                if (res.status === 201) {
                     resolve(res.data)
         } else {
-          resolve('Error : ', JSON.stringify(res.data))
-        }
-            })
+                    resolve('Error : ', JSON.stringify(res.data))
+                }
+      })
       .catch((err) => {
         resolve(err.response.data)
-      })
-    })
+            })
+  })
 }
 
 /**
@@ -44,14 +44,14 @@ function addProduct(name, quantity) {
  */
 async function getProductsAsync() {
   let res = await axios.get(urlApi)
-  return res.data
+    return res.data
 }
 
 /**
  * IIFE (Immediately Invoked Function Expression)
  */
 ;(async () => {
-  console.log('# getProducts() : ', await getProducts())
-    console.log('# addProduct() : ', await addProduct('MacBook Pro 16\' 16Go', 76))
-  console.log('# getProductsAsync() : ', await getProductsAsync())
+    console.log('# getProducts() : ', await getProducts())
+  console.log('# addProduct() : ', await addProduct('MacBook Pro 16\' 16Go', 76))
+    console.log('# getProductsAsync() : ', await getProductsAsync())
 })()

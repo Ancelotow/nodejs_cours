@@ -29,29 +29,29 @@ router.get('/products/:name', (req, res) => {
  */
 router.post('/products', jsonParser, (req, res) => {
   try {
-    Add(req.body.name, req.body.quantity)
-        res.status(201).send(req.body)
-  } catch (e) {
+        Add(req.body.name, req.body.quantity)
+    res.status(201).send(req.body)
+    } catch (e) {
     res.status(400).send(e.message)
-    }
+  }
 })
 
 /**
  * Delete product or remove quantity from product
  */
 router.delete('/products/:name', (req, res) => {
-  try {
+    try {
     if (req.query.quantity) {
-            Remove(req.params.name, req.query.quantity)
-            res.send('Quantity has been removed')
-    } else {
-            res.statusCode = 400
-      res.send('Missing parameter \'quantity\'')
+      Remove(req.params.name, req.query.quantity)
+      res.send('Quantity has been removed')
+        } else {
+      res.statusCode = 400
+            res.send('Missing parameter \'quantity\'')
         }
-    } catch (e) {
-    res.statusCode = 400
+  } catch (e) {
+        res.statusCode = 400
     res.send(e.message)
-    }
+  }
 })
 
 export { router }

@@ -4,9 +4,11 @@ import bodyParser from 'body-parser'
 import swaggerUI from 'swagger-ui-express'
 import docs from './docs/index.mjs'
 import morgan from 'morgan'
+import {config} from "dotenv"
 
 const app = express()
 
+config()
 const port = process.env.PORT || 3000
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -21,5 +23,5 @@ app.use(morgan('dev'))
 app.use(router)
 
 app.listen(port, () => {
-  console.log(`Server listen on port ${port}`)
+    console.log(`Server listen on port ${port}`)
 })
