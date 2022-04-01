@@ -7,9 +7,7 @@
   "scripts": {
     "dev": "nodemon --inspect ./index.mjs --ignore products.json",
     "start": "node index.mjs",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "lint:fix": "eslint --fix *.mjs",
-    "lint": "eslint *.mjs"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "repository": {
     "type": "git",

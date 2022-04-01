@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const urlApi = 'https://esgi-api-nodejs.herokuapp.com/products';
+const urlApi = 'https://esgi-api-nodejs.herokuapp.com/products'
 
 /**
  * Récupère la liste de tout les produits
@@ -10,8 +10,8 @@ function getProducts() {
     return new Promise((resolve, _) => {
         axios.get(urlApi).then((res) => {
             resolve(res.data)
-        });
-    });
+        })
+    })
 }
 
 /**
@@ -27,12 +27,12 @@ function addProduct(name, quantity){
             if (res.status === 201) {
                 resolve(res.data)
             } else {
-                resolve("Error : ", JSON.stringify(res.data))
+                resolve('Error : ', JSON.stringify(res.data))
             }
         }).catch((err) => {
             resolve(err.response.data)
-        });
-    });
+        })
+    })
 }
 
 /**
@@ -49,8 +49,8 @@ async function getProductsAsync() {
  */
 (async () => {
 
-    console.log("# getProducts() : ", await getProducts());
-    console.log("# addProduct() : ", await addProduct("MacBook Pro 16' 16Go", 76))
-    console.log("# getProductsAsync() : ", await getProductsAsync());
+    console.log('# getProducts() : ', await getProducts())
+    console.log('# addProduct() : ', await addProduct('MacBook Pro 16\' 16Go', 76))
+    console.log('# getProductsAsync() : ', await getProductsAsync())
 
-})();
+})()

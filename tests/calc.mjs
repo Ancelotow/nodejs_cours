@@ -31,4 +31,4 @@ const Multiply = (a, b) => {
     return a * b
 }
 
-export {Add, Subtract, Multiply};
+export {Add, Subtract, Multiply}
