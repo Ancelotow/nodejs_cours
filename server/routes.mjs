@@ -1,4 +1,4 @@
-import {GetAll, GetByName, Add, Remove} from './product.mjs'
+import { GetAll, GetByName, Add, Remove } from './product.mjs'
 import express from 'express'
 import bodyParser from 'body-parser'
 
@@ -14,25 +14,25 @@ const router = express.Router()
  * Get all products
  */
 router.get('/products', (req, res) => {
-    res.status(200).send(GetAll())
+  res.status(200).send(GetAll())
 })
 
 /**
  * Get one specific product
  */
 router.get('/products/:name', (req, res) => {
-    res.status(200).send(GetByName(req.params.name))
+  res.status(200).send(GetByName(req.params.name))
 })
 
 /**
  * Add new product if not exists
  */
 router.post('/products', jsonParser, (req, res) => {
-    try {
-        Add(req.body.name, req.body.quantity)
+  try {
+    Add(req.body.name, req.body.quantity)
         res.status(201).send(req.body)
-    } catch (e) {
-        res.status(400).send(e.message)
+  } catch (e) {
+    res.status(400).send(e.message)
     }
 })
 
@@ -40,18 +40,18 @@ router.post('/products', jsonParser, (req, res) => {
  * Delete product or remove quantity from product
  */
 router.delete('/products/:name', (req, res) => {
-    try {
-        if(req.query.quantity) {
+  try {
+    if (req.query.quantity) {
             Remove(req.params.name, req.query.quantity)
             res.send('Quantity has been removed')
-        } else {
+    } else {
             res.statusCode = 400
-            res.send('Missing parameter \'quantity\'')
+      res.send('Missing parameter \'quantity\'')
         }
     } catch (e) {
-        res.statusCode = 400
-        res.send(e.message)
+    res.statusCode = 400
+    res.send(e.message)
     }
 })
 
-export {router}
+export { router }

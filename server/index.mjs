@@ -1,4 +1,4 @@
-import {router} from './routes.mjs'
+import { router } from './routes.mjs'
 import express from 'express'
 import bodyParser from 'body-parser'
 import swaggerUI from 'swagger-ui-express'
@@ -21,7 +21,5 @@ app.use(morgan('dev'))
 app.use(router)
 
 app.listen(port, () => {
-    console.log(`Server listen on port ${port}`)
+  console.log(`Server listen on port ${port}`)
 })
-
-

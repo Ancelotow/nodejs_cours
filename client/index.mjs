@@ -7,10 +7,10 @@ const urlApi = 'https://esgi-api-nodejs.herokuapp.com/products'
  * @returns {Promise<[{name, quantity}]>} La liste des produits
  */
 function getProducts() {
-    return new Promise((resolve, _) => {
-        axios.get(urlApi).then((res) => {
-            resolve(res.data)
-        })
+  return new Promise((resolve, _) => {
+    axios.get(urlApi).then((res) => {
+      resolve(res.data)
+    })
     })
 }
 
@@ -20,18 +20,21 @@ function getProducts() {
  * @param quantity La quantité
  * @returns {Promise<string | {name, quantity}>} La réponse de l'API (201: ajouter, 400: éxiste déjà)
  */
-function addProduct(name, quantity){
-    const product = { name, quantity: quantity}
+function addProduct(name, quantity) {
+  const product = { name, quantity: quantity }
     return new Promise((resolve, _) => {
-        axios.post(urlApi, product).then((res) => {
-            if (res.status === 201) {
-                resolve(res.data)
-            } else {
-                resolve('Error : ', JSON.stringify(res.data))
-            }
-        }).catch((err) => {
-            resolve(err.response.data)
-        })
+    axios
+      .post(urlApi, product)
+      .then((res) => {
+        if (res.status === 201) {
+                    resolve(res.data)
+        } else {
+          resolve('Error : ', JSON.stringify(res.data))
+        }
+            })
+      .catch((err) => {
+        resolve(err.response.data)
+      })
     })
 }
 
@@ -40,17 +43,15 @@ function addProduct(name, quantity){
  * @returns {Promise<[{name, quantity}]>} La liste des produits
  */
 async function getProductsAsync() {
-    let res = await axios.get(urlApi)
-    return res.data
+  let res = await axios.get(urlApi)
+  return res.data
 }
 
 /**
  * IIFE (Immediately Invoked Function Expression)
  */
-(async () => {
-
-    console.log('# getProducts() : ', await getProducts())
+;(async () => {
+  console.log('# getProducts() : ', await getProducts())
     console.log('# addProduct() : ', await addProduct('MacBook Pro 16\' 16Go', 76))
-    console.log('# getProductsAsync() : ', await getProductsAsync())
-
+  console.log('# getProductsAsync() : ', await getProductsAsync())
 })()

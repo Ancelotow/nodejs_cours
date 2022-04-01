@@ -6,7 +6,7 @@
  * @constructor
  */
 const Add = (a, b) => {
-    return a + b
+  return a + b
 }
 
 /**
@@ -17,7 +17,7 @@ const Add = (a, b) => {
  * @constructor
  */
 const Subtract = (a, b) => {
-    return a - b
+  return a - b
 }
 
 /**
@@ -31,4 +31,4 @@ const Multiply = (a, b) => {
     return a * b
 }
 
-export {Add, Subtract, Multiply}
+export { Add, Subtract, Multiply }
